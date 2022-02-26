@@ -1,0 +1,67 @@
+package qwe;
+import java.util.Scanner;
+
+public class sample 
+{		 
+	int front(int [] arr,int b)
+		 {
+			int sum=0;
+			for(int i=0;i<b;i++)
+				 sum+=arr[i];
+	     	return sum;
+				 
+		 }
+		
+		
+		 int end(int [] arr,int b,int n)
+		 {
+			int sum=0,note=1,i=n-1;
+			while(note<=b){
+				 sum+=arr[i];
+				 --i; note++;
+				 }
+		     return sum;
+			 	 
+		 }
+		
+		
+		public static void main(String [] args)
+		{
+		Scanner in=new Scanner(System.in);
+		sample a=new sample();
+		
+		System.out.println("enter the size");
+		int n=in.nextInt();
+		int [] arr=new int[n];
+		
+		System.out.println("enter the array");
+		for(int i=0;i<n;i++)
+		arr[i]=in.nextInt();
+		
+		System.out.println("enter the terms for the sum");
+		int b=in.nextInt();
+		in.close();
+		int sum=0;
+		int newsum=0;
+		int maxsum=0,note=0;
+		if(n==b)
+		{
+			for(int i=0;i<n;i++)
+				{sum=arr[i]+sum;}
+			System.out.println("the sum is: "+sum);
+			
+		}
+		else
+		{
+			while(note<b)
+				{
+				newsum=a.front(arr, note)  +  a.end(arr, b-note, n);
+				if(newsum>maxsum)
+					maxsum=newsum;
+				note++;
+				}
+		
+		System.out.println("the max sum is ="+maxsum);
+		}
+	}
+}
